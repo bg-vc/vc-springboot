@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+    <springProperty scope="context" name="LOG_PATH" source="log.path"
+                    defaultValue="logs"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%thread] %-5level %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5}[%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="APP_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}/vc_springboot_all.log</File>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%thread] %-5level %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5}[%L] - %msg%n</pattern>
+        </encoder>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/backup/vc_springboot_all.%d{yyyy-MM-dd}.log</FileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="APP_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}/vc_springboot_error.log</File>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%thread] %-5level %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5}[%L] - %msg%n</pattern>
+        </encoder>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/backup/vc_springboot_error.%d{yyyy-MM-dd}.log</FileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="APP_INFO" />
+        <appender-ref ref="APP_ERROR" />
+    </root>
+
+</configuration>
