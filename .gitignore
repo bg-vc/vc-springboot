@@ -1,0 +1,17 @@
+logs/
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.DS_Store
+logFile*
+/vc-springboot-api/*.classpath
+/vc-springboot-api/*.project
+/vc-springboot-api/.settings
+/vc-springboot-api/target
+/vc-springboot-core/*.classpath
+/vc-springboot-core/*.project
+/vc-springboot-core/.settings
+/vc-springboot-core/catalina*
+/vc-springboot-core/target
