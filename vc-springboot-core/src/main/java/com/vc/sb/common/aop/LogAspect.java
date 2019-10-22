@@ -44,7 +44,8 @@ public class LogAspect {
             result = joinPoint.proceed();
             log.info("[log aop] end; method:{}, costTime:{}", methodName, stopWatch.getTime());
         } catch (Throwable throwable) {
-            log.error("[log aop] exception; method:{}, costTime:{}", methodName, stopWatch.getTime());
+            throwable.printStackTrace();
+            log.error("[log aop] exception:{}; method:{}, costTime:{}", throwable.getMessage(), methodName, stopWatch.getTime());
             result = new Result(ResultCode.internal_server_error);
         }
         return result;

@@ -2,6 +2,7 @@ package com.vc.sb.common.model;
 
 import com.vc.sb.common.enums.ResultCode;
 import lombok.Data;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
  * Author:       VinceChen
@@ -9,6 +10,7 @@ import lombok.Data;
  * Description:
  */
 @Data
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Result<T> {
 
     private int code;

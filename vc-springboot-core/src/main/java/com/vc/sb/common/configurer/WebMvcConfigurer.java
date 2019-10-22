@@ -36,26 +36,9 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Resource
     private JwtInterceptor jwtInterceptor;
 
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        super.configureMessageConverters(converters);
-        FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
-        FastJsonConfig config = new FastJsonConfig();
-        config.setSerializerFeatures(
-                SerializerFeature.WriteMapNullValue,
-                SerializerFeature.WriteNullStringAsEmpty,
-                SerializerFeature.WriteNullNumberAsZero,
-                SerializerFeature.WriteNullListAsEmpty,
-                SerializerFeature.DisableCircularReferenceDetect);
-        converter.setFastJsonConfig(config);
-        converter.setDefaultCharset(Charset.forName("UTF-8"));
-
-        converters.add(converter);
-    }
-
-    public void addInterceptors(InterceptorRegistry registry) {
+   /* public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor).addPathPatterns("/**");
-    }
+    }*/
 
     @Override
     public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
