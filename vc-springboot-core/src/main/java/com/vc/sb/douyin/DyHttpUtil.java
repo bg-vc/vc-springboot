@@ -1,4 +1,4 @@
-package com.vc.sb.common.util;
+package com.vc.sb.douyin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -29,8 +29,9 @@ import java.util.Map;
  * Date:         2019-10-16 22:30
  * Description:
  */
+
 @Slf4j
-public class HttpUtil {
+public class DyHttpUtil {
     private static PoolingHttpClientConnectionManager connMgr;
     private static RequestConfig requestConfig;
     private static final int MAX_TIMEOUT = 5000;
@@ -64,23 +65,11 @@ public class HttpUtil {
 
     /**
      * @param url
-     * @param params
      * @return
      */
-    public static String doGet(String url, Map<String, String> params) {
+    public static String doGet(String url, Map<String, Object> headers) {
         String apiUrl = url;
         StringBuffer param = new StringBuffer();
-        int i = 0;
-        for (String key : params.keySet()) {
-            if (i == 0) {
-                param.append("?");
-            } else {
-                param.append("&");
-            }
-            param.append(key).append("=").append(params.get(key));
-            i++;
-        }
-        apiUrl += param;
         HttpClient httpClient;
         if (apiUrl.startsWith("https")) {
             httpClient = HttpClients.custom().setSSLSocketFactory(createSSLConnectionSocketFactory())
@@ -91,6 +80,9 @@ public class HttpUtil {
 
         String result = null;
         HttpGet httpGet = new HttpGet(apiUrl);
+        for (String key : headers.keySet()) {
+            httpGet.setHeader(key, headers.get(key).toString());
+        }
         try {
             HttpResponse response = httpClient.execute(httpGet);
             HttpEntity entity = response.getEntity();
@@ -101,6 +93,8 @@ public class HttpUtil {
         } catch (IOException e) {
             log.error("doGet error:{}", e.getMessage());
         }
+        log.error("doGet result:{}",result);
+
         return result;
     }
 
