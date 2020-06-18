@@ -16,6 +16,7 @@ import java.util.Map;
  */
 
 
+
 public class DyService {
 
     public static String byteTable1 =
@@ -39,46 +40,63 @@ public class DyService {
     public static String[] byteTable2 = byteTable1.split(" ");
     private static final String NULL_MD5_STRING = "00000000000000000000000000000000";
 
-    public static String cookies = "ttreq=1$0cadffe56dd233f7488176d509c8e278adfa2617; " +
-            "sessionid_ss=782a07058cf22b991b95aba59d8dbedc; " +
-            "uid_tt=1da853334ab51d151f24cd0f737b27a7; " +
-            "sid_guard=782a07058cf22b991b95aba59d8dbedc%7C1592191015%7C5183999%7CFri%2C+14-Aug-2020+03%3A16%3A54+GMT; " +
-            "passport_csrf_token=abcf54cbb56d82d199d40a8e19798884; " +
-            "sid_tt=782a07058cf22b991b95aba59d8dbedc; " +
-            "uid_tt_ss=1da853334ab51d151f24cd0f737b27a7; " +
-            "d_ticket=c6b9497008d9303477099ca09145388741be5; " +
-            "sessionid=782a07058cf22b991b95aba59d8dbedc ";
+    public static String cookies = "install_id=3931504500825581; " +
+            "ttreq=1$c0b4ee69e6ea724b1fbbc1c75a26450250e21ada; " +
+            "qh[360]=1; " +
+            "odin_tt=077dd7dccadf6e34e12ac7b3fdd390275ab6b1ded95062f16f9f526b3f67ba37189a780277644f4624e1d139654c01f67acd6dbe4c55d74e6582c301a28820b7";
 
     public static void main(String[] args) {
-        int ts = (int) (System.currentTimeMillis() / 1000);
-        String _rticket = System.currentTimeMillis() + "";
+        int successCount = 0;
+        int failCount = 0;
+        for (int m=0; m<20; m++) {
+            for (int i= 0; i<1; i++) {
+                int ts = (int) (System.currentTimeMillis() / 1000);
+                String _rticket = System.currentTimeMillis() + "";
 
-        //String url = "https://aweme-eagle.snssdk.com/aweme/v1/user/?user_id=3737927633602936&retry_type=no_retry&iid=78814502723912&device_id=68086216055&ac=wifi&channel=douyin_huitou_and23&aid=1128&app_name=aweme&version_code=180&version_name=1.8.0&device_platform=android&ssmix=a&device_type=Redmi+Note+7+Pro&device_brand=xiaomi&language=zh&os_api=28&os_version=9&uuid=860921041149739&openudid=6f3cd6f182e899f1&manifest_version_code=180&resolution=1080*2131&dpi=440&update_version_code=1800&_rticket=1592194441969&ts=1592194439&as=aac7d83b185ee6f589c7d8&cp=3b68c7d83b18c7d83b6030&mas=01999323b379f32319d3f9b9b9455890ae2319d3f9a32393595399";
-        //String url = "https://aweme.snssdk.com/aweme/v1/user/follower/list/?user_id=101080185313&max_time=1592200652&count=20&retry_type=no_retry&iid=78814502723912&device_id=68086216055&ac=wifi&channel=douyin_huitou_and23&aid=1128&app_name=aweme&version_code=180&version_name=1.8.0&device_platform=android&ssmix=a&device_type=Redmi+Note+7+Pro&device_brand=xiaomi&language=zh&os_api=28&os_version=9&uuid=860921041149739&openudid=6f3cd6f182e899f1&manifest_version_code=180&resolution=1080*2131&dpi=440&update_version_code=1800&_rticket=1592200652785&ts=1592200650&as=aac9df7cb85ee70dccc9df&cp=7d08c9df7cb8c9df7d0030&mas=0199932379f9d35919a3f9b9b945d88f0c5919a3f9f9f91933d399";
-        //String url = "https://aweme.snssdk.com/aweme/v1/aweme/favorite/?user_id=58763644826&max_cursor=0&count=20&retry_type=no_retry&iid=78814502723912&device_id=68086216055&ac=wifi&channel=douyin_huitou_and23&aid=1128&app_name=aweme&version_code=180&version_name=1.8.0&device_platform=android&ssmix=a&device_type=Redmi+Note+7+Pro&device_brand=xiaomi&language=zh&os_api=28&os_version=9&uuid=860921041149739&openudid=6f3cd6f182e899f1&manifest_version_code=180&resolution=1080*2131&dpi=440&update_version_code=1800&_rticket=1592201069485&ts=1592201067&as=aac9dfde885ee70f6dc9df&cp=ded8c9dfde88c9dfded038&mas=019993232399195919a3f9b9b945d8cf895919a3f919535933d399";
-        String url = "https://api.amemv.com/aweme/v1/aweme/post/?user_id=58763644826&max_cursor=0&count=20&retry_type=no_retry&iid=78814502723912&device_id=68086216055&ac=wifi&channel=douyin_huitou_and23&aid=1128&app_name=aweme&version_code=180&version_name=1.8.0&device_platform=android&ssmix=a&device_type=Redmi+Note+7+Pro&device_brand=xiaomi&language=zh&os_api=28&os_version=9&uuid=860921041149739&openudid=6f3cd6f182e899f1&manifest_version_code=180&resolution=1080*2131&dpi=440&update_version_code=1800&_rticket=1592201191481&ts=1592201189&as=aac732de885ee70fe7c732&cp=ded8c732de88c732ded038&mas=0199932323991973f3d3f9b9b945d8cfd873f3d3f9d3995933d399";
-        String params = url.substring(url.indexOf("?") + 1);
-        String STUB = "";
-        String s = getXGon(params, STUB, cookies);
+                // 3737927633602936 848456505900387
 
-        String Gorgon = xGorgon(ts, StrToByte(s));
 
-        long ticket = System.currentTimeMillis();
-        long time = ticket / 1000;
+                String deviceId = "641760368533752";
+                String iid = "3931504500825581";
 
-        Map<String, Object> headers = new HashMap<>();
-        headers.put("X-Gorgon", Gorgon);
-        headers.put("X-Khronos", ts);
-        headers.put("sdk-version", "1");
-        headers.put("Accept-Encoding", "gzip");
-        headers.put("X-SS-REQ-TICKET", _rticket);
-        headers.put("User-Agent", "com.ss.android.ugc.aweme/100501 (Linux; U; Android 9; zh_CN; Redmi Note 7 Pro; Build/PKQ1.181203.001; Cronet/58.0.2991.0)");
-        headers.put("Host", "aweme.snssdk.com");
-        headers.put("Cookie", cookies);
-        headers.put("Connection", "Keep-Alive");
+                // 用户基本信息
+                //String url = "https://aweme-eagle-lq.snssdk.com/aweme/v1/user/?user_id=72673737181&retry_type=no_retry&iid=" +iid + "&device_id=" +deviceId +  "&ac=wifi&channel=douyin_huitou_and23&aid=2329&app_name=aweme&version_code=880&version_name=8.8.0&device_platform=android&ssmix=a&device_type=Redmi+Note+7+Pro&device_brand=xiaomi&language=zh&os_api=28&os_version=9&openudid=6f3cd6f182e899f1&manifest_version_code=880&resolution=1080*2131&dpi=440&update_version_code=880&_rticket=1592296195608&ts=1592296194&as=aac8eb8b185ee88303c8eb&cp=8b68c8eb8b18c8eb8b6030&mas=01999323b37923799923f9b9b94528feff799923f9f333f3232399";
+                String url = "https://aweme-eagle-lq.snssdk.com/aweme/v1/user/?user_id=72673737181&retry_type=no_retry&iid=" +iid + "&device_id=" +deviceId +  "&ac=wifi&channel=tengxun&aid=1128&app_name=aweme&version_code=890&version_name=8.9.0&device_platform=android&ssmix=a&device_type=MT2-L05&device_brand=HUAWEI&language=zh&os_api=21&os_version=5.1.1&openudid=6f3cd6f182e899f1&manifest_version_code=890&resolution=720*1280&dpi=160&update_version_code=890&_rticket=1592296195608&ts=1592296194&as=aac8eb8b185ee88303c8eb&cp=8b68c8eb8b18c8eb8b6030&mas=01999323b37923799923f9b9b94528feff799923f9f333f3232399";
 
-       DyHttpUtil.doGet(url, headers);
 
+                String params = url.substring(url.indexOf("?") + 1);
+                String STUB = "";
+                String s = getXGon(params, STUB, cookies);
+                System.out.println("xGon:" + s);
+                String Gorgon = xGorgon(ts, StrToByte(s));
+
+                System.out.println("Gorgon:" + Gorgon);
+                Map<String, Object> headers = new HashMap<>();
+                // 036141108000f6cea0cea0098ed04ad1ef87c949db1250753ceb
+                headers.put("X-Gorgon", Gorgon);
+                headers.put("X-Khronos", ts);
+                //headers.put("sdk-version", "1");
+                headers.put("Accept-Encoding", "");
+                headers.put("X-SS-REQ-TICKET", _rticket);
+                headers.put("User-Agent", "com.ss.android.ugc.aweme/100501 (Linux; U; Android 9; zh_CN; Redmi Note 7 Pro; Build/PKQ1.181203.001; Cronet/58.0.2991.0)");
+                headers.put("Host", "aweme-lq.snssdk.com");
+                headers.put("Cookie", cookies);
+                headers.put("Connection", "Keep-Alive");
+                String result = DyHttpUtil.doGet(url, headers);
+                if (result.length() < 100) {
+                    failCount++;
+                } else {
+                    successCount++;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        System.out.println("total:20, success:" + successCount + ", fail:" + failCount);
 
     }
 
@@ -278,7 +296,7 @@ public class DyService {
     }
 
     public static String xGorgon(int timeMillis, byte[] inputBytes) {
-
+        System.out.println("inputBytes:" + inputBytes);
         ArrayList<String> data1 = new ArrayList<>();
         data1.add("3");
         data1.add("61");
